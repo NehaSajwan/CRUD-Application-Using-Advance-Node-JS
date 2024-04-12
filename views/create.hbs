@@ -1,0 +1,57 @@
+{{>header}}
+<div class="container mt-4">
+    <div class="card bg-dark text-white">
+        <div class="card-header d-flex justify-content-between">
+            <h3> Add Employee</h3>
+            <a href="/" class="btn btn-primary"> Back</a>
+        </div>
+        <div class="card-body">
+            <form action="/store" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name" name="name" required>
+                    {{#if crudValidation.name.errorOccur}}
+                    <p class="text-danger">
+                        {{crudValidation.name.message}}
+                    </p>
+                    {{/if}}
+
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
+                    {{#if crudValidation.email.errorOccur}}
+                    <p class="text-danger">
+                        {{crudValidation.email.message}}
+                    </p>
+                    {{/if}}
+                </div>
+                <div class="mb-3">
+                    <label for="contact" class="form-label">Contact Number</label>
+                    <input type="text" class="form-control" id="contact" placeholder="Contact Number" name="contact" required>
+                    {{#if crudValidation.contact.errorOccur}}
+                    <p class="text-danger">
+                        {{crudValidation.contact.message}}
+                    </p>
+                    {{/if}}
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Profile Image</label>
+                    <input type="file" class="form-control" id="image" name="image">
+                </div>
+                <div class="row">
+                    <div class="col-sm-6  d-grid">
+                        <button class="btn btn-primary">Submit</button>
+
+                    </div>
+                    <div class="col-sm-6 d-grid">
+                        <button class="btn btn-warning" type="reset">Reset</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{>footer}}

@@ -1,0 +1,46 @@
+{{>header}}
+<div class="container mt-4">
+    <div class="card text-white">
+        <div class="card-header d-flex justify-content-between">
+            <h3> Employee</h3>
+            <a href="/create" class="btn btn-primary"> Add Employee</a>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <div class="table-responsive">
+                <table class="table table-striped" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each employees}}
+                        <tr>
+                            <th> {{this._id}} </th>
+                            <td><img src="{{this.image}}" alt="{{this.name}}" height="70px" width="100%"></td>
+                            <th> {{this.name}} </th>
+                            <td> {{this.email}} </td>
+                            <td> {{this.contact}} </td>
+                            <td>
+                                <a href="/edit/{{this._id}}" class="btn btn-warning me-2">Edit</a>
+                    
+
+                                <button class="btn btn-danger" onclick="document.getElementById('employee-{{this._id}}').submit()">Delete</button> 
+                               <form action="/destroy/{{this._id}}" id="employee-{{this._id}}" method="POST"></form>
+                            </td>
+                        </tr>
+                        {{/each}}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{{>footer}}
